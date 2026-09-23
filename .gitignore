@@ -1,0 +1,11 @@
+# Python environment and caches
+.venv/
+__pycache__/
+*.pyc
+
+# Generated retrieval index (rebuilt by `wiki ingest`; machine files stay outside the vault)
+index/
+
+# Obsidian per-device workspace state
+vault/.obsidian/workspace*.json
+.DS_Store

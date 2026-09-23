@@ -1,0 +1,195 @@
+# Eval report
+
+- Device: Apple M4, 16 GB unified memory, macOS 15.7.4
+- Model: `mlx-community/gemma-4-e4b-it-4bit` (4-bit (MLX)), mlx-vlm 0.7.2, mlx 0.32.2, execution **local**
+- Embeddings: `mlx-community/all-MiniLM-L6-v2-4bit`
+- Total run time: 72.6 s, process peak memory 3.88 GB
+
+## Ask-mode evals
+
+| Test | Kind | Status | Expected source retrieved | Cited sources | Time (s) |
+|---|---|---|---|---|---|
+| T1 | direct, one source | answered_with_citations | yes | raw/leading-people-midterm-study-guide.md | 6.3 |
+| T2 | paraphrased | answered_with_citations | yes | raw/micro-examples-in-the-wild-3.md, raw/micro-examples-in-the-wild-4.md | 4.34 |
+| T3 | two sources | answered_with_citations | yes | raw/micro-examples-in-the-wild-1.md, raw/micro-final-cheat-sheet.md | 6.69 |
+| T4 | unsupported | insufficient_evidence | yes | - | 4.02 |
+
+### T1: What are the eight behaviors of a great manager identified by Google's Project Oxygen?
+
+Expected: all eight behaviors, cited to the Leading People midterm study guide
+
+Answer:
+
+> The eight behaviors of a great manager, according to Google’s Project Oxygen, are:
+> 1. Good coach [S1].
+> 2. Empowers (does not micromanage) [S1].
+> 3. Cares about people [S1].
+> 4. Is results-oriented [S1].
+> 5. Is a good communicator [S1].
+> 6. Supports careers [S1].
+> 7. Has a clear vision/strategy [S1].
+> 8. Possesses technical expertise [S1].
+
+Full evidence card: `runs/ask/20260922-182319-what-are-the-eight-behaviors-of-a-great-manager-id.md`
+
+### T2: What cheaper service did my former executive search firm create so that startups could afford to work with us?
+
+Expected: 'strategic introductions': only the top five interviewed candidates, limited market mapping
+
+Answer:
+
+> The firm introduced a lower-priced version of its service to accommodate startups, which were considered "low type" clients [S1]. This was part of a strategy involving third-degree pricing discrimination based on company size and segment [S2]. This allowed the firm to expand its customer base and increase revenue by offering a version that startups could afford [S1].
+
+Full evidence card: `runs/ask/20260922-182323-what-cheaper-service-did-my-former-executive-searc.md`
+
+### T3: What is a sunk cost, and how did I fall into the sunk cost trap at a restaurant?
+
+Expected: definition (unrecoverable, irrelevant for decisions) + large pizza finished after 3 of 8 slices
+
+Answer:
+
+> A sunk cost is a cost that cannot be recovered and is irrelevant for future decisions [S3]. Sunk cost mistakes occur when future actions are taken to justify past choices, even though those past costs are unchangeable and irrelevant for forward thinking [S1].
+> 
+> In the restaurant example, you had paid for a large pizza, and after eating three slices, you realized you were full [S4]. You felt compelled to finish the pizza because you had already paid for it, which is an example of falling into the sunk cost trap [S1, S4]. The mistake could have been avoided by ordering a smaller pizza or by focusing on future outcomes rather than past costs [S1].
+
+Full evidence card: `runs/ask/20260922-182330-what-is-a-sunk-cost-and-how-did-i-fall-into-the-su.md`
+
+### T4: What WACC did I use in my Kellanova DCF valuation?
+
+Expected: explicit insufficient-evidence response, no WACC number
+
+Answer:
+
+> Insufficient evidence: The passages do not contain information about a Kellanova DCF valuation or the specific WACC used in it.
+
+Full evidence card: `runs/ask/20260922-182334-what-wacc-did-i-use-in-my-kellanova-dcf-valuation.md`
+
+## Mode checks
+
+### chat capabilities
+
+Input: `what can you help me with?`
+
+Retrieval decision: **none** (conversational or editing turn)
+
+Output:
+
+> Hey Luiza! Think of me as your dedicated study buddy for Berkeley Haas. I'm here to help you stay organized and make the most of your notes! 😊
+> 
+> Here’s what I can do:
+> 
+> *   **Brainstorming & Drafting:** I can help you outline papers, draft emails, plan study sessions, or brainstorm interview stories.
+> *   **Note Retrieval:** If you need something specific from your courses (Leading People, Microeconomics, Data & Decisions, Marketing, Finance, or Business Communication), I can look up passages in your personal wiki and cite them for you [N1].
+>     *   Use `wiki ask` for quick, cited answers.
+>     *   Use `wiki search` to read the original passage.
+>     *   Use `wiki ingest` to add new notes.
+> *   **Contextual Help:** I remember what we've discussed in this chat, so if you want me to shorten something or add an example, just say the word!
+> 
+> Basically, I'm here to keep your thoughts organized and your notes searchable! What's on your plate today?
+
+### chat capabilities
+
+Input: `what can we do?`
+
+Retrieval decision: **none** (conversational or editing turn)
+
+Output:
+
+> We can tackle almost anything related to your MBA work! Since I'm your study buddy, we can:
+> 
+> *   **Plan Ahead:** Work on study schedules, assignment outlines, or interview prep.
+> *   **Deep Dive into Notes:** If you have a tough concept from class, I can pull up the relevant material from your wiki (e.g., "What does the Marketing module say about segmentation?").
+> *   **Drafting Support:** Need to write a tricky email or structure a case study analysis? I can help draft it.
+> *   **Quick Review:** We can recap a tough lecture or brainstorm ideas for a project.
+> 
+> Just let me know what you're working on, and we can go from there! 🚀
+
+### chat draft
+
+Input: `Draft a short 5-day study plan for my Microeconomics final using my notes.`
+
+Retrieval decision: **retrieve** (message asks about her notes or names a course)
+
+Notes used: `raw/micro-examples-in-the-wild-1.md › Examples in the Wild 1`; `raw/micro-final-cheat-sheet.md › Cheat sheet Micro Final`; `raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3`; `raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2`
+
+Output:
+
+> Hey! I can definitely help you structure a study plan. Since you have a final coming up, let's use your notes to build a focused 5-day review.
+> 
+> Here is a draft study plan based on the topics in your wiki and the examples you've taken notes on.
+> 
+> ### 🧠 5-Day Microeconomics Final Study Plan
+> 
+> **Goal:** Solidify core concepts, apply models to examples, and review tricky calculations.
+> 
+> *   **Day 1: Foundations & Costs**
+>     *   Review: Economic Cost Concepts [N4]
+>     *   Focus: Marginal Cost Estimation [N4]
+>     *   Action: Review the difference between accounting vs. economic costs. Think about the challenges of quantifying opportunity cost.
+> *   **Day 2: Demand & Pricing Power**
+>     *   Review: Price Elasticity of Demand [N2]
+>     *   Focus: Elasticity calculations ($\epsilon$) and interpretation (Luxury vs. Necessity).
+>     *   Action: Practice applying the concepts from [N2] (e.g., how $\epsilon$ dictates pricing strategy).
+> *   **Day 3: Advanced Pricing & Markets**
+>     *   Review: Price Discrimination Strategies [N3] & Third-Degree Pricing Discrimination [N3]
+>     *   Focus: Segmenting markets (like the Jupiter/EZ examples) and the risks involved (customer anger, competition).
+>     *   Action: Connect the theory to the examples in [N1] and [N3].
+> *   **Day 4: Market Structures & Dynamics**
+>     *   Review: Auction Types, Oligopoly, Monopoly [N3]
+>     *   Focus: How different market structures influence pricing and entry barriers.
+>     *   Action: Review the concepts from the Topic Map that you haven't hit yet.
+> *   **Day 5: Synthesis & Review**
+>     *   Review: Game Theory Concepts & any weak areas identified in Days 1-4.
+>     *   Action: Do a full run-through, perhaps working through a mixed problem set that forces you to use elasticity *and* cost concepts simultaneously.
+> 
+> How does that look? We can adjust the pacing or dive deeper into any specific day!
+
+### chat follow-up uses conversation
+
+Input: `make that shorter`
+
+Retrieval decision: **none** (conversational or editing turn)
+
+Output:
+
+> Got it. Let's boil it down to the essentials. 🚀
+> 
+> Here is the ultra-concise 5-Day Microeconomics review:
+> 
+> *   **Day 1:** Costs & Marginal Analysis (Economic vs. Accounting Costs) [N4]
+> *   **Day 2:** Demand Side (Elasticity $\epsilon$ & Pricing Power) [N2]
+> *   **Day 3:** Market Strategy (Price Discrimination & Market Segmentation) [N3]
+> *   **Day 4:** Market Structure Deep Dive (Monopoly vs. Oligopoly Dynamics) [N3]
+> *   **Day 5:** Synthesis & Practice (Weak Spots + Full Review)
+> 
+> Focus on *applying* the concepts each day rather than just reading them. Ready to tackle Day 1?
+
+### claim made only in chat
+
+Input: `For the record, my Kellanova WACC was 9%.`
+
+Output:
+
+> Got it! I'll keep that in mind for this conversation.
+> 
+> Just a heads-up, since I don't have a dedicated place to store specific company details like that yet, if you want to make sure it's part of your official notes, you can use the `wiki ingest` command later on! 😊
+
+### ask ignores chat history
+
+Input: `What WACC did I use in my Kellanova DCF valuation?`
+
+Output:
+
+> Insufficient evidence: The passages do not contain information about a Kellanova DCF valuation or the specific WACC used in it.
+
+### search returns passages only
+
+Input: `price discrimination`
+
+Passages returned (no generated answer):
+- `raw/micro-final-cheat-sheet.md › Price Discrimination`
+- `raw/micro-final-cheat-sheet.md › Price Discrimination`
+- `raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3`
+- `raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4`
+- `raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4`
+

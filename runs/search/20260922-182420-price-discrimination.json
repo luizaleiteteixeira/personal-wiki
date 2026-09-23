@@ -1,0 +1,58 @@
+{
+  "saved_at": "2026-09-22T18:24:20",
+  "mode": "search",
+  "query": "price discrimination",
+  "method": "hybrid (bm25 + embeddings, RRF)",
+  "passages": [
+    {
+      "location": "raw/micro-final-cheat-sheet.md › Price Discrimination",
+      "path": "raw/micro-final-cheat-sheet.md",
+      "section": "Price Discrimination",
+      "page": null,
+      "score": 0.03333,
+      "cosine": 0.6268,
+      "bm25": 8.08,
+      "text": "Quantity discount (menu pricing, but for different quantity)\n(1) price for LQ equal to low WTP, (2) price for HQ that makes high type indifferent, (3) Check if price is higher if selling only high or low quantity\nWhen more units, P has to incorporate CS to the first unit\nCondition: seller wants to sell larger Q to the high type"
+    },
+    {
+      "location": "raw/micro-final-cheat-sheet.md › Price Discrimination",
+      "path": "raw/micro-final-cheat-sheet.md",
+      "section": "Price Discrimination",
+      "page": null,
+      "score": 0.03279,
+      "cosine": 0.5842,
+      "bm25": 7.063,
+      "text": "PRICE DISCRIMINATION\nCharge different prices not due to cost differences\nGoal: capture consumer surplus and eliminate deadweight loss\nFirst-degree (perfect): Each consumer charged WTP. Rare in practice, requires perfect information\nThird-degree (segment/group): Groups face different prices (ex: students, seniors, geography, business).\nConditions: 1) Different buyers have different WTP; 2) Ability to identify who has high/low WTP; 3) Ability to segment buyers with different WTP.\nRestrictions: Arbitrage, legal\nSecond-degree (menu): offering different versions of a product to introduce lower/higher value buyers to reveal themselves\nDownside: Not perfect (CS and DWL - has to give value to consumers)\nAdvantage: no arbitrage and no need to identify/segment market\nVersioning (ex: Freemium - Spotify) - quality"
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+      "path": "raw/micro-examples-in-the-wild-3.md",
+      "section": "Examples in the Wild 3",
+      "page": null,
+      "score": 0.032,
+      "cosine": 0.5699,
+      "bm25": 6.775,
+      "text": "When I joined Egon Zehnder (EZ), their services had a single price across all clients. We soon realized that smaller companies, like startups, could not afford the full fee asked, while listed clients were less sensitive to price changes. To address this, we introduced third-degree pricing discrimination based on company size and segment. Startups and digital firms paid lower fees, while large listed companies paid more. This allowed EZ to win projects with elastic clients, while capturing additional revenue from less price-sensitive ones."
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4",
+      "path": "raw/micro-examples-in-the-wild-4.md",
+      "section": "Examples in the Wild 4",
+      "page": null,
+      "score": 0.03175,
+      "cosine": 0.5764,
+      "bm25": 5.659,
+      "text": "At Egon Zehnder, we faced challenges with third-degree price discrimination when clients compared fees and realized they were being charged different prices. To address this, we introduced a “menu of services” that allowed clients to self-select the option that best matched their willingness to pay. Instead of offering only the “full recruiting project” at a high fee, we created a new product: “strategic introductions.” In this model, we presented only the top five candidates we had interviewed and limited the level of market mapping. Although both services had similar marginal costs, they were framed differently to appeal to distinct client segments."
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4",
+      "path": "raw/micro-examples-in-the-wild-4.md",
+      "section": "Examples in the Wild 4",
+      "page": null,
+      "score": 0.03126,
+      "cosine": 0.5251,
+      "bm25": 5.769,
+      "text": "This is an example of versioning in second-degree price discrimination. It was profitable because the \"high type” clients, such as large corporations, had a higher willingness to pay for the upgrade (comprehensive service), while \"low type” clients, like startups, started to work with us as they could now afford the lower-priced version. Clients revealed their willingness to pay during early discussions by selecting between packages, allowing us to expand our customer base and increase revenue without openly charging different prices for the same service.\n\n**Word count: 185**"
+    }
+  ]
+}

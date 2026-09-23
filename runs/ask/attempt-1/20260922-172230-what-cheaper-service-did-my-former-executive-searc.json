@@ -1,0 +1,87 @@
+{
+  "saved_at": "2026-09-22T17:22:30",
+  "mode": "ask",
+  "question": "What cheaper service did my former executive search firm create so that startups could afford to work with us?",
+  "model": "mlx-community/gemma-4-e2b-it-4bit",
+  "quantization": "4-bit (MLX)",
+  "runtime": "mlx-vlm 0.7.2, mlx 0.32.2",
+  "embedding_model": "mlx-community/all-MiniLM-L6-v2-4bit",
+  "execution": "local",
+  "retrieved": [
+    {
+      "location": "raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4",
+      "path": "raw/micro-examples-in-the-wild-4.md",
+      "section": "Examples in the Wild 4",
+      "page": null,
+      "score": 0.0328,
+      "cosine": 0.4954,
+      "bm25": 27.463,
+      "text": "This is an example of versioning in second-degree price discrimination. It was profitable because the \"high type” clients, such as large corporations, had a higher willingness to pay for the upgrade (comprehensive service), while \"low type” clients, like startups, started to work with us as they could now afford the lower-priced version. Clients revealed their willingness to pay during early discussions by selecting between packages, allowing us to expand our customer base and increase revenue without openly charging different prices for the same service.\n\n**Word count: 185**"
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+      "path": "raw/micro-examples-in-the-wild-3.md",
+      "section": "Examples in the Wild 3",
+      "page": null,
+      "score": 0.03252,
+      "cosine": 0.5162,
+      "bm25": 14.591,
+      "text": "When I joined Egon Zehnder (EZ), their services had a single price across all clients. We soon realized that smaller companies, like startups, could not afford the full fee asked, while listed clients were less sensitive to price changes. To address this, we introduced third-degree pricing discrimination based on company size and segment. Startups and digital firms paid lower fees, while large listed companies paid more. This allowed EZ to win projects with elastic clients, while capturing additional revenue from less price-sensitive ones."
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2",
+      "path": "raw/micro-examples-in-the-wild-2.md",
+      "section": "Examples in the Wild 2",
+      "page": null,
+      "score": 0.03227,
+      "cosine": 0.4596,
+      "bm25": 22.004,
+      "text": "I used to work for Egon Zehnder, a leadership advisory firm focused on executive search. I remember how hard it was to price a project, especially because it was difficult to measure the marginal cost of a search. \n\n\"Should we accept this project?\" was a frequent discussion."
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+      "path": "raw/micro-examples-in-the-wild-3.md",
+      "section": "Examples in the Wild 3",
+      "page": null,
+      "score": 0.03037,
+      "cosine": 0.4088,
+      "bm25": 9.025,
+      "text": "The conditions for segment pricing were present. First, there was heterogeneity in willingness to pay: startups faced budget constraints while corporations were open to paying higher fees. Second, we could identify “groups” using public information such as size, investments, and financial reports. Third, we could easily separate these segments in our pricing model, ensuring each one was charged appropriately.\n\nThe main threats are customer anger and competition. Some clients realized they were being charged different prices, which risked damaging trust. In addition, competitors could win projects by continuing to offer uniform rates to large corporations, which might force EZ to reconsider our pricing strategy. \n\nStill, segmentation expanded EZ’s client base and increased revenue overall.\n\n**Word count: 197**"
+    },
+    {
+      "location": "raw/buscomm-case-3-west-side-united.md › Buscomm Case 3 West Side United",
+      "path": "raw/buscomm-case-3-west-side-united.md",
+      "section": "Buscomm Case 3 West Side United",
+      "page": null,
+      "score": 0.02711,
+      "cosine": 0.3843,
+      "bm25": 6.112,
+      "text": "Gaps: The structure is not fully stable yet, because it still depends a lot on funding, volunteers, and on how committed the hospitals and their leaders are. I also think they need to prioritize better, since they are trying to tackle very big and structural problems while still being a small organization.\n\nDespite the gaps, I would fund the program, as I truly believe in their mission. They have shown that they can generate great impact and they have the potential to continue growing and improving.\n\n**3) How well did Ansell and colleagues assemble a coalition and turn it into an organization? What vulnerabilities or gaps could interfere with the ability of WSU to continue its work?**"
+    },
+    {
+      "location": "raw/marketing-nike-case.md › Case",
+      "path": "raw/marketing-nike-case.md",
+      "section": "Case",
+      "page": null,
+      "score": 0.02586,
+      "cosine": 0.3725,
+      "bm25": 4.847,
+      "text": "**Nike’s Consumer Direct Offense Strategy: A Hit or a Miss?**\n\n**Luiza Leite Teixeira**\n\n**The problem and key issue to be addressed:**\n\nIn recent years, Nike has focused on its DTC strategy through initiatives like Consumer Direct Offense and Consumer Direct Acceleration. These programs increased brand control, consumer connection, loyalty, and digital engagement, with DTC now representing 44% of revenue. However, this brought new challenges: inventory accumulation of USD 8.5B, margin decline from 46 to 43.5% in FY2023, a 16% decline in net income, and more operational complexity from managing a large network of owned stores, apps, and logistics. At the same time, competitors such as On and Hoka captured Nike’s former shelf space and community presence in multi-brand retail."
+    }
+  ],
+  "answer": "Insufficient evidence: The evidence does not specify what cheaper service a former executive search firm created for startups.",
+  "citations": [],
+  "citation_check": {
+    "status": "insufficient_evidence",
+    "valid": [],
+    "invalid": []
+  },
+  "timing": {
+    "generation_seconds": 1.44,
+    "prompt_tokens": 1215,
+    "output_tokens": 21,
+    "tokens_per_sec": 63.7,
+    "mlx_peak_memory_gb": 4.28,
+    "process_peak_rss_gb": 2.48
+  }
+}

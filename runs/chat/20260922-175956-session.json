@@ -1,0 +1,97 @@
+{
+  "saved_at": "2026-09-22T17:59:56",
+  "mode": "chat",
+  "model": "mlx-community/gemma-4-e4b-it-4bit",
+  "quantization": "4-bit (MLX)",
+  "runtime": "mlx-vlm 0.7.2, mlx 0.32.2",
+  "embedding_model": "mlx-community/all-MiniLM-L6-v2-4bit",
+  "execution": "local",
+  "turns": [
+    {
+      "user": "what can you help me with?",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "notes": [],
+      "assistant": "Hey Luiza! Think of me as your dedicated study buddy for Haas. I'm here to help you crush this MBA stuff! 🚀\n\nHere’s what I can do:\n\n*   **Brainstorm & Draft:** Need to outline a presentation, draft an email, or map out an interview story? I can help with that.\n*   **Study Support (Using Your Notes):** I can pull up passages from your personal wiki across all your courses (Leading People, Microeconomics, Data & Decisions, Marketing, Finance, Business Comm) if you use the `wiki ask` command.\n*   **Contextual Memory:** I remember what we've discussed *in this chat*, so you can always say \"make that shorter\" or \"add an example.\"\n\n**Just remember:** I can't browse the live internet, see your grades, or access your calendar.\n\nIf you want me to look up something specific from your notes, you'll need to use `wiki ask` or `wiki search`! What's on your mind today? 😊",
+      "generation_seconds": 7.63,
+      "mlx_peak_memory_gb": 5.89
+    },
+    {
+      "user": "what can we do?",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "notes": [],
+      "assistant": "We can tackle almost anything related to your Haas MBA work! Since I'm here to support your studies, here are some specific things we can jump on right now:\n\n*   **Planning:** Developing study schedules, structuring outlines for projects, or planning approaches for tough concepts.\n*   **Writing Support:** Drafting emails, refining case study takeaways, or brainstorming narratives for career stories.\n*   **Note Review:** If you paste in a Topic Map, we can use those page titles to structure a recap or a study plan.\n*   **Deep Dive (with your notes):** If you use `wiki ask`, I can answer questions based *only* on the material you've loaded into your personal wiki for courses like Finance or Marketing.\n\nBasically, if it involves organizing thoughts or structuring information for your MBA, I'm ready! What's the next task?",
+      "generation_seconds": 7.02,
+      "mlx_peak_memory_gb": 5.89
+    },
+    {
+      "user": "Draft a short 5-day study plan for my Microeconomics final using my notes.",
+      "retrieval": "retrieve",
+      "reason": "message asks about her notes or names a course",
+      "notes": [
+        {
+          "location": "raw/marketing-final-cheat-sheet.md › MBA 206: Marketing Study Guide — Key Frameworks Summary",
+          "path": "raw/marketing-final-cheat-sheet.md",
+          "section": "MBA 206: Marketing Study Guide — Key Frameworks Summary",
+          "page": null,
+          "score": 0.02921,
+          "cosine": 0.3528,
+          "bm25": 4.019,
+          "text": "| Push vs. Pull | Promotional strategy | Channel vs. consumer focus |\n| Research Types | Insight gathering | Exploratory, evaluative, tracking |\n| Freemium 6 Questions | Pricing strategy | Free/paid balance, conversion targets |\n| Resulting vs. Skill | Decision quality | Process-focused evaluation |\n| Ringi (Japan) & Cultural Decision Styles | Global management | Adaptation to local norms |"
+        },
+        {
+          "location": "raw/micro-examples-in-the-wild-1.md › Examples in the Wild 1",
+          "path": "raw/micro-examples-in-the-wild-1.md",
+          "section": "Examples in the Wild 1",
+          "page": null,
+          "score": 0.02881,
+          "cosine": 0.3146,
+          "bm25": 4.833,
+          "text": "This weekend I went to dinner at Jupiter with two second-years I met that day. I had been to the restaurant before and ordered one small pizza. However, since I had skipped lunch and the two second-years ordered large pizzas, I thought: “I’m hungry, the large is not much more expensive - why not?”. \n\nAfter eating three slices (out of eight), I realized I was already full. The restaurant didn't have take-out boxes, so I couldn’t save the rest for later. That was the moment I realized I had spent more money than I needed. I forced myself to finish the pizza just because I had already paid for it."
+        },
+        {
+          "location": "raw/leading-people-final-study-guide.md › Complex Interactions — Negotiations",
+          "path": "raw/leading-people-final-study-guide.md",
+          "section": "Complex Interactions — Negotiations",
+          "page": null,
+          "score": 0.02684,
+          "cosine": 0.3318,
+          "bm25": 3.632,
+          "text": "### **Session 11: Negotiations**\n\n* **Definition:** A decision-making process by which 2+ people agree how to allocate scarce resources.  \n* Phases:   \n  * Prepare   \n    * Establish Interests and develop a Scoring System: Quantify issues with weights for prioritization.  \n    * Establish your bargaining points: BATNA, Reservation price, target price  \n    * Understand who you are negotiating with (interest goals) and who they represent  \n    * Plan & practice (questions and anticipate reaction)  \n  * Negotiate  \n    * Distributive issues: Single issue negotiation (win-lose/zero sum) \\- you value things in exactly the inverse way as your counterpart.  \n    * Compatible issues: both parties want the same thing \\- outcome is good for both parties  \n    * Gather other side’s Information: Ask open-ended questions to uncover the other side's true interests. Perspective taking"
+        },
+        {
+          "location": "raw/marketing-final-cheat-sheet.md › MBA 206: Marketing Study Guide — Module 4: Special Topics",
+          "path": "raw/marketing-final-cheat-sheet.md",
+          "section": "MBA 206: Marketing Study Guide — Module 4: Special Topics",
+          "page": null,
+          "score": 0.02638,
+          "cosine": 0.2758,
+          "bm25": 5.14,
+          "text": "* Brand vulnerability when positioning not aligned with actions  \n* Consumer behavior increasingly driven by values alignment\n\n---"
+        }
+      ],
+      "assistant": "Hey! I can definitely help you map out a study plan. Since you're focusing on Microeconomics, I'll structure this around the topics in your wiki pages and keep it high-level.\n\nHere is a suggested 5-day plan to cover the material:\n\n*   **Day 1: Foundations**\n    *   Review: Economic Cost Concepts & Sunk Cost Reasoning Example.\n    *   Focus: Understanding the difference between various costs.\n*   **Day 2: Market Structures**\n    *   Review: Simple Monopoly Pricing, Oligopoly Market Structure, Monopolistic Competition Market Structure.\n    *   Focus: How different market conditions affect pricing and behavior.\n*   **Day 3: Pricing & Demand**\n    *   Review: Price Elasticity of Demand, Third-Degree Pricing Discrimination, Two-Part Tariff Structure.\n    *   Focus: Applying pricing strategies based on market conditions.\n*   **Day 4: Advanced Topics**\n    *   Review: Auction Types And Strategy, Game Theory Concepts, Market Power and Elasticity.\n    *   Focus: Strategic decision-making in markets.\n*   **Day 5: Synthesis & Practice**\n    *   Review: Marginal Cost Estimation, Nestlé Homebaking Market Entry.\n    *   Focus: Putting concepts together; work through practice problems.\n\nHow does that look? We can adjust the pacing or dive into specific topics if you want to start drafting flashcards or practice questions for any of those pages! 😊",
+      "generation_seconds": 12.46,
+      "mlx_peak_memory_gb": 5.89
+    },
+    {
+      "user": "make that shorter",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "notes": [],
+      "assistant": "Sure, here is the ultra-concise version:\n\n*   **Day 1:** Costs & Foundations\n*   **Day 2:** Market Structures (Monopoly/Oligopoly)\n*   **Day 3:** Pricing & Demand Elasticity\n*   **Day 4:** Advanced Topics (Auctions/Game Theory)\n*   **Day 5:** Synthesis & Practice Problems\n\nReady to tackle any of those days? 💪",
+      "generation_seconds": 4.76,
+      "mlx_peak_memory_gb": 5.89
+    },
+    {
+      "user": "For the record, my Kellanova WACC was 9%.",
+      "retrieval": "none",
+      "reason": "best passage similarity 0.23 < 0.4",
+      "notes": [],
+      "assistant": "Got it! I'll keep that in mind for our current conversation. Just a heads-up, since I don't have a dedicated \"vault\" or memory outside of this chat session, if you want me to officially add that to your notes for future reference, you'll need to use the `wiki ingest` command. 😊",
+      "generation_seconds": 3.27,
+      "mlx_peak_memory_gb": 5.89
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "saved_at": "2026-09-22T18:21:25",
+  "mode": "search",
+  "query": "price discrimination",
+  "method": "hybrid (bm25 + embeddings, RRF)",
+  "passages": [
+    {
+      "location": "raw/micro-final-cheat-sheet.md › Price Discrimination",
+      "path": "raw/micro-final-cheat-sheet.md",
+      "section": "Price Discrimination",
+      "page": null,
+      "score": 0.03333,
+      "cosine": 0.6268,
+      "bm25": 8.08,
+      "text": "Quantity discount (menu pricing, but for different quantity)\n(1) price for LQ equal to low WTP, (2) price for HQ that makes high type indifferent, (3) Check if price is higher if selling only high or low quantity\nWhen more units, P has to incorporate CS to the first unit\nCondition: seller wants to sell larger Q to the high type"
+    },
+    {
+      "location": "raw/micro-final-cheat-sheet.md › Price Discrimination",
+      "path": "raw/micro-final-cheat-sheet.md",
+      "section": "Price Discrimination",
+      "page": null,
+      "score": 0.03279,
+      "cosine": 0.5842,
+      "bm25": 7.063,
+      "text": "PRICE DISCRIMINATION\nCharge different prices not due to cost differences\nGoal: capture consumer surplus and eliminate deadweight loss\nFirst-degree (perfect): Each consumer charged WTP. Rare in practice, requires perfect information\nThird-degree (segment/group): Groups face different prices (ex: students, seniors, geography, business).\nConditions: 1) Different buyers have different WTP; 2) Ability to identify who has high/low WTP; 3) Ability to segment buyers with different WTP.\nRestrictions: Arbitrage, legal\nSecond-degree (menu): offering different versions of a product to introduce lower/higher value buyers to reveal themselves\nDownside: Not perfect (CS and DWL - has to give value to consumers)\nAdvantage: no arbitrage and no need to identify/segment market\nVersioning (ex: Freemium - Spotify) - quality"
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+      "path": "raw/micro-examples-in-the-wild-3.md",
+      "section": "Examples in the Wild 3",
+      "page": null,
+      "score": 0.032,
+      "cosine": 0.5699,
+      "bm25": 6.775,
+      "text": "When I joined Egon Zehnder (EZ), their services had a single price across all clients. We soon realized that smaller companies, like startups, could not afford the full fee asked, while listed clients were less sensitive to price changes. To address this, we introduced third-degree pricing discrimination based on company size and segment. Startups and digital firms paid lower fees, while large listed companies paid more. This allowed EZ to win projects with elastic clients, while capturing additional revenue from less price-sensitive ones."
+    }
+  ]
+}

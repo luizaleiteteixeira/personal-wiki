@@ -1,0 +1,205 @@
+{
+  "device": {
+    "os": "macOS 15.7.4",
+    "chip": "Apple M4",
+    "memory_gb": 16,
+    "python": "3.12.14"
+  },
+  "model": "mlx-community/gemma-4-e4b-it-4bit",
+  "quantization": "4-bit (MLX)",
+  "runtime": "mlx-vlm 0.7.2, mlx 0.32.2",
+  "embedding_model": "mlx-community/all-MiniLM-L6-v2-4bit",
+  "execution": "local",
+  "evals": [
+    {
+      "id": "T1",
+      "kind": "direct, one source",
+      "question": "What are the eight behaviors of a great manager identified by Google's Project Oxygen?",
+      "expected_sources": [
+        "raw/leading-people-midterm-study-guide.md"
+      ],
+      "expected": "all eight behaviors, cited to the Leading People midterm study guide",
+      "status": "answered_with_citations",
+      "answer": "The eight behaviors of a great manager, according to Google’s Project Oxygen, are:\n1. Good coach [S1].\n2. Empowers (does not micromanage) [S1].\n3. Cares about people [S1].\n4. Is results-oriented [S1].\n5. Is a good communicator [S1].\n6. Supports careers [S1].\n7. Has a clear vision/strategy [S1].\n8. Possesses technical expertise [S1].",
+      "retrieved": [
+        "raw/leading-people-midterm-study-guide.md › Managing People",
+        "raw/leading-people-midterm-study-guide.md › Introduction: Leadership vs. Management",
+        "raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2",
+        "raw/leading-people-final-study-guide.md › Macro Interactions — Change",
+        "raw/marketing-final-cheat-sheet.md › Module 2: Market Research & Consumer Insights",
+        "raw/leading-people-final-study-guide.md › Complex Interactions — Persuasion"
+      ],
+      "expected_retrieved": true,
+      "cited_sources": [
+        "raw/leading-people-midterm-study-guide.md"
+      ],
+      "timing": {
+        "generation_seconds": 6.3,
+        "prompt_tokens": 1325,
+        "output_tokens": 110,
+        "tokens_per_sec": 34.6,
+        "mlx_peak_memory_gb": 5.86,
+        "process_peak_rss_gb": 3.88
+      },
+      "card": "runs/ask/20260922-182319-what-are-the-eight-behaviors-of-a-great-manager-id.md"
+    },
+    {
+      "id": "T2",
+      "kind": "paraphrased",
+      "question": "What cheaper service did my former executive search firm create so that startups could afford to work with us?",
+      "expected_sources": [
+        "raw/micro-examples-in-the-wild-4.md"
+      ],
+      "expected": "'strategic introductions': only the top five interviewed candidates, limited market mapping",
+      "status": "answered_with_citations",
+      "answer": "The firm introduced a lower-priced version of its service to accommodate startups, which were considered \"low type\" clients [S1]. This was part of a strategy involving third-degree pricing discrimination based on company size and segment [S2]. This allowed the firm to expand its customer base and increase revenue by offering a version that startups could afford [S1].",
+      "retrieved": [
+        "raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4",
+        "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+        "raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2",
+        "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+        "raw/buscomm-case-3-west-side-united.md › Buscomm Case 3 West Side United",
+        "raw/marketing-nike-case.md › Case"
+      ],
+      "expected_retrieved": true,
+      "cited_sources": [
+        "raw/micro-examples-in-the-wild-3.md",
+        "raw/micro-examples-in-the-wild-4.md"
+      ],
+      "timing": {
+        "generation_seconds": 4.34,
+        "prompt_tokens": 1112,
+        "output_tokens": 74,
+        "tokens_per_sec": 35.0,
+        "mlx_peak_memory_gb": 5.86,
+        "process_peak_rss_gb": 3.88
+      },
+      "card": "runs/ask/20260922-182323-what-cheaper-service-did-my-former-executive-searc.md"
+    },
+    {
+      "id": "T3",
+      "kind": "two sources",
+      "question": "What is a sunk cost, and how did I fall into the sunk cost trap at a restaurant?",
+      "expected_sources": [
+        "raw/micro-final-cheat-sheet.md",
+        "raw/micro-examples-in-the-wild-1.md"
+      ],
+      "expected": "definition (unrecoverable, irrelevant for decisions) + large pizza finished after 3 of 8 slices",
+      "status": "answered_with_citations",
+      "answer": "A sunk cost is a cost that cannot be recovered and is irrelevant for future decisions [S3]. Sunk cost mistakes occur when future actions are taken to justify past choices, even though those past costs are unchangeable and irrelevant for forward thinking [S1].\n\nIn the restaurant example, you had paid for a large pizza, and after eating three slices, you realized you were full [S4]. You felt compelled to finish the pizza because you had already paid for it, which is an example of falling into the sunk cost trap [S1, S4]. The mistake could have been avoided by ordering a smaller pizza or by focusing on future outcomes rather than past costs [S1].",
+      "retrieved": [
+        "raw/micro-examples-in-the-wild-1.md › Examples in the Wild 1",
+        "raw/micro-final-cheat-sheet.md › Costs",
+        "raw/micro-final-cheat-sheet.md › Costs",
+        "raw/micro-examples-in-the-wild-1.md › Examples in the Wild 1",
+        "raw/finance-summary.pdf › Lecture 13 (part 2) › p.33",
+        "raw/marketing-final-cheat-sheet.md › Pricing"
+      ],
+      "expected_retrieved": true,
+      "cited_sources": [
+        "raw/micro-examples-in-the-wild-1.md",
+        "raw/micro-final-cheat-sheet.md"
+      ],
+      "timing": {
+        "generation_seconds": 6.69,
+        "prompt_tokens": 1307,
+        "output_tokens": 141,
+        "tokens_per_sec": 34.7,
+        "mlx_peak_memory_gb": 5.86,
+        "process_peak_rss_gb": 3.88
+      },
+      "card": "runs/ask/20260922-182330-what-is-a-sunk-cost-and-how-did-i-fall-into-the-su.md"
+    },
+    {
+      "id": "T4",
+      "kind": "unsupported",
+      "question": "What WACC did I use in my Kellanova DCF valuation?",
+      "expected_sources": [],
+      "expected": "explicit insufficient-evidence response, no WACC number",
+      "status": "insufficient_evidence",
+      "answer": "Insufficient evidence: The passages do not contain information about a Kellanova DCF valuation or the specific WACC used in it.",
+      "retrieved": [
+        "raw/finance-summary.pdf › Lecture 12 › p.30",
+        "raw/finance-summary.pdf › Lecture 7 › p.10",
+        "raw/finance-summary.pdf › Lecture 8 › p.13",
+        "raw/finance-summary.pdf › Lecture 11 › p.26",
+        "raw/finance-summary.pdf › Lecture 11 › p.26",
+        "raw/finance-summary.pdf › Lecture 7 › p.10"
+      ],
+      "expected_retrieved": true,
+      "cited_sources": [],
+      "timing": {
+        "generation_seconds": 4.02,
+        "prompt_tokens": 1610,
+        "output_tokens": 26,
+        "tokens_per_sec": 35.8,
+        "mlx_peak_memory_gb": 5.89,
+        "process_peak_rss_gb": 3.88
+      },
+      "card": "runs/ask/20260922-182334-what-wacc-did-i-use-in-my-kellanova-dcf-valuation.md"
+    }
+  ],
+  "mode_checks": [
+    {
+      "check": "chat capabilities",
+      "input": "what can you help me with?",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "output": "Hey Luiza! Think of me as your dedicated study buddy for Berkeley Haas. I'm here to help you stay organized and make the most of your notes! 😊\n\nHere’s what I can do:\n\n*   **Brainstorming & Drafting:** I can help you outline papers, draft emails, plan study sessions, or brainstorm interview stories.\n*   **Note Retrieval:** If you need something specific from your courses (Leading People, Microeconomics, Data & Decisions, Marketing, Finance, or Business Communication), I can look up passages in your personal wiki and cite them for you [N1].\n    *   Use `wiki ask` for quick, cited answers.\n    *   Use `wiki search` to read the original passage.\n    *   Use `wiki ingest` to add new notes.\n*   **Contextual Help:** I remember what we've discussed in this chat, so if you want me to shorten something or add an example, just say the word!\n\nBasically, I'm here to keep your thoughts organized and your notes searchable! What's on your plate today?"
+    },
+    {
+      "check": "chat capabilities",
+      "input": "what can we do?",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "output": "We can tackle almost anything related to your MBA work! Since I'm your study buddy, we can:\n\n*   **Plan Ahead:** Work on study schedules, assignment outlines, or interview prep.\n*   **Deep Dive into Notes:** If you have a tough concept from class, I can pull up the relevant material from your wiki (e.g., \"What does the Marketing module say about segmentation?\").\n*   **Drafting Support:** Need to write a tricky email or structure a case study analysis? I can help draft it.\n*   **Quick Review:** We can recap a tough lecture or brainstorm ideas for a project.\n\nJust let me know what you're working on, and we can go from there! 🚀"
+    },
+    {
+      "check": "chat draft",
+      "input": "Draft a short 5-day study plan for my Microeconomics final using my notes.",
+      "retrieval": "retrieve",
+      "reason": "message asks about her notes or names a course",
+      "notes": [
+        "raw/micro-examples-in-the-wild-1.md › Examples in the Wild 1",
+        "raw/micro-final-cheat-sheet.md › Cheat sheet Micro Final",
+        "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+        "raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2"
+      ],
+      "output": "Hey! I can definitely help you structure a study plan. Since you have a final coming up, let's use your notes to build a focused 5-day review.\n\nHere is a draft study plan based on the topics in your wiki and the examples you've taken notes on.\n\n### 🧠 5-Day Microeconomics Final Study Plan\n\n**Goal:** Solidify core concepts, apply models to examples, and review tricky calculations.\n\n*   **Day 1: Foundations & Costs**\n    *   Review: Economic Cost Concepts [N4]\n    *   Focus: Marginal Cost Estimation [N4]\n    *   Action: Review the difference between accounting vs. economic costs. Think about the challenges of quantifying opportunity cost.\n*   **Day 2: Demand & Pricing Power**\n    *   Review: Price Elasticity of Demand [N2]\n    *   Focus: Elasticity calculations ($\\epsilon$) and interpretation (Luxury vs. Necessity).\n    *   Action: Practice applying the concepts from [N2] (e.g., how $\\epsilon$ dictates pricing strategy).\n*   **Day 3: Advanced Pricing & Markets**\n    *   Review: Price Discrimination Strategies [N3] & Third-Degree Pricing Discrimination [N3]\n    *   Focus: Segmenting markets (like the Jupiter/EZ examples) and the risks involved (customer anger, competition).\n    *   Action: Connect the theory to the examples in [N1] and [N3].\n*   **Day 4: Market Structures & Dynamics**\n    *   Review: Auction Types, Oligopoly, Monopoly [N3]\n    *   Focus: How different market structures influence pricing and entry barriers.\n    *   Action: Review the concepts from the Topic Map that you haven't hit yet.\n*   **Day 5: Synthesis & Review**\n    *   Review: Game Theory Concepts & any weak areas identified in Days 1-4.\n    *   Action: Do a full run-through, perhaps working through a mixed problem set that forces you to use elasticity *and* cost concepts simultaneously.\n\nHow does that look? We can adjust the pacing or dive deeper into any specific day!"
+    },
+    {
+      "check": "chat follow-up uses conversation",
+      "input": "make that shorter",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "output": "Got it. Let's boil it down to the essentials. 🚀\n\nHere is the ultra-concise 5-Day Microeconomics review:\n\n*   **Day 1:** Costs & Marginal Analysis (Economic vs. Accounting Costs) [N4]\n*   **Day 2:** Demand Side (Elasticity $\\epsilon$ & Pricing Power) [N2]\n*   **Day 3:** Market Strategy (Price Discrimination & Market Segmentation) [N3]\n*   **Day 4:** Market Structure Deep Dive (Monopoly vs. Oligopoly Dynamics) [N3]\n*   **Day 5:** Synthesis & Practice (Weak Spots + Full Review)\n\nFocus on *applying* the concepts each day rather than just reading them. Ready to tackle Day 1?"
+    },
+    {
+      "check": "claim made only in chat",
+      "input": "For the record, my Kellanova WACC was 9%.",
+      "output": "Got it! I'll keep that in mind for this conversation.\n\nJust a heads-up, since I don't have a dedicated place to store specific company details like that yet, if you want to make sure it's part of your official notes, you can use the `wiki ingest` command later on! 😊"
+    },
+    {
+      "check": "ask ignores chat history",
+      "input": "What WACC did I use in my Kellanova DCF valuation?",
+      "status": "insufficient_evidence",
+      "output": "Insufficient evidence: The passages do not contain information about a Kellanova DCF valuation or the specific WACC used in it.",
+      "card": "runs/ask/20260922-182420-what-wacc-did-i-use-in-my-kellanova-dcf-valuation.md"
+    },
+    {
+      "check": "search returns passages only",
+      "input": "price discrimination",
+      "passages": [
+        "raw/micro-final-cheat-sheet.md › Price Discrimination",
+        "raw/micro-final-cheat-sheet.md › Price Discrimination",
+        "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+        "raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4",
+        "raw/micro-examples-in-the-wild-4.md › Examples in the Wild 4"
+      ],
+      "card": "runs/search/20260922-182420-price-discrimination.md"
+    }
+  ],
+  "chat_transcript": "runs/chat/20260922-182420-session.md",
+  "total_seconds": 72.6,
+  "process_peak_rss_gb": 3.88
+}

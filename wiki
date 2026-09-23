@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Launcher for the personal wiki CLI. Uses the project virtualenv and, by default,
+# only the locally cached models (no network calls), so it behaves the same offline.
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export HF_HUB_OFFLINE="${HF_HUB_OFFLINE:-1}"
+export TRANSFORMERS_VERBOSITY=error TOKENIZERS_PARALLELISM=false
+exec "$DIR/.venv/bin/python" -W ignore -m wikicli "$@"
