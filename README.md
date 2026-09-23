@@ -110,7 +110,8 @@ about 14.4 GB just to load, which leaves no headroom on a 16 GB machine.
 - Full ingestion of 16 sources: 103 sections, 266 passages, **947 s** (9.1 s per wiki page).
   Re-ingesting unchanged sources takes about 20 s (sections are skipped by content hash).
 - Single-source re-ingest: 11.6 s.
-- Ask: **4.9-7.2 s** per answer, MLX peak memory **5.9 GB**, process resident memory 3.1 GB.
+- Ask (two model calls: extract, then answer): **8-10 s** per answer; an unsupported question stops
+  after the first call (**3.9 s**). MLX peak memory **5.9 GB**, process resident memory 3.1 GB.
 - Search: under 1 s, no language model loaded.
 
 ## 3. Architecture
@@ -136,23 +137,29 @@ about 14.4 GB just to load, which leaves no headroom on a 16 GB machine.
   boundaries so bullets and formulas stay whole) plus `index/embeddings.npy`. A query is scored by BM25
   (keywords) and by cosine similarity (meaning); the two rankings are combined with reciprocal rank
   fusion. `wiki search` exposes this tool directly.
-- **RAG workflow** (ask): question → retrieve 6 passages → numbered evidence `[S1]…[S6]` + research
-  rules → Gemma → citation check → display and save.
-- **Harness**: everything around the model. The core logic is in `wikicli/modes.py` (about 210 lines).
+- **RAG workflow** (ask): question → retrieve 6 passages → **Gemma quotes the evidence verbatim** →
+  harness verifies every quote against its passage → **Gemma answers from verified quotes only** →
+  citation and support checks → display and save.
+- **Harness**: everything around the model. The core logic is in `wikicli/modes.py` (about 310 lines).
 
 **One path through the code: `./wiki ask "What is a sunk cost…?"`**
 1. `cli.py:cmd_ask` rejects any mode other than `local`, then calls `modes.ask`.
 2. `modes.ask` loads the index and calls `Index.search` (`retrieval.py`), which returns 6 hits. Here
    they are the Examples in the Wild 1 essay and the "Costs" section of the Micro cheat sheet.
-3. It builds a **fresh** message list: the system message is `prompts/wiki-instructions.md` (research
-   rules), and the user message is the question plus numbered passages with their locations. No chat
-   history and no persona are included.
-4. `llm.generate` applies Gemma's chat template and runs MLX generation at temperature 0.
-5. `check_citations` parses `[S#]` references, flags citations of passages that were not retrieved, and
-   labels the result `answered_with_citations`, `insufficient_evidence`, `uncited_answer` or
-   `invalid_citation`.
-6. `evidence.save` writes `runs/ask/<time>-<question>.json` and `.md` (question, model identity,
-   retrieved passages with scores, answer, citations, timing, memory), and the CLI prints the answer.
+3. **Extract.** It builds a **fresh** message list with `prompts/extract-instructions.md` and the question
+   plus the numbered passages; no chat history and no persona are included. `llm.generate` applies
+   Gemma's chat template and runs MLX generation at temperature 0. Gemma returns lines such as
+   `[S3] "Sunk = cannot be recovered, irrelevant for decisions"`.
+4. **Verify.** `verify_quotes` keeps a quote only if it occurs in the passage it names (exactly, or with
+   at least 90% of its characters matching in order). If no quote survives, the harness returns
+   "Insufficient evidence" without calling the model again.
+5. **Answer.** A second fresh call with `prompts/wiki-instructions.md` and only the verified quotes.
+6. **Check.** `check_citations` parses `[S#]`, flags passages that were not retrieved, and labels the
+   result (`answered_with_citations`, `insufficient_evidence`, `uncited_answer`, `invalid_citation`).
+   `support_check` flags cited sentences whose content words mostly do not appear in the cited passage.
+7. `evidence.save` writes `runs/ask/<time>-<question>.json` and `.md` (question, model identity,
+   retrieved passages with scores, verified and rejected quotes, answer, citations, checks, timing,
+   memory), and the CLI prints the answer, citations and quotes.
 
 **Chat**: system = `prompts/persona.md` (voice plus an accurate list of what it can and cannot do); the
 last 6 exchanges are kept as conversation context. **Retrieval decision** (`ChatSession.route`):
@@ -163,6 +170,8 @@ last 6 exchanges are kept as conversation context. **Retrieval decision** (`Chat
 
 Retrieved notes are cited as `[N#]`. They are added to that turn only, while the history keeps just the
 plain messages. Chat never feeds `ask`: each ask call starts from an empty context.
+**Guardrail:** the model has no memory beyond the session, so if a reply claims "I've noted / saved / will
+remember…", the harness regenerates it once with an explicit instruction, and logs that it did.
 
 **Errors**: missing index → "Run `wiki ingest` first"; model not in the cache → message with the
 download command (exit code 2); sources outside `vault/raw/` are refused; `--mode online` is refused.
@@ -175,7 +184,7 @@ download command (exit code 2); sources outside `vault/raw/` are refused; `--mod
 - **Hybrid retrieval**: BM25 alone would miss paraphrases (test 2 avoids the source's keywords);
   embeddings alone blur exact terms like "WACC" or "Project Oxygen". RRF is simple and needs no tuning.
 - **Research rules vs. personality**: kept in separate files and loaded per mode
-  (`prompts/wiki-instructions.md` for ask, `prompts/persona.md` for chat, `prompts/ingest-instructions.md`
+  (`prompts/extract-instructions.md` and `prompts/wiki-instructions.md` for ask, `prompts/persona.md` for chat, `prompts/ingest-instructions.md`
   for page generation).
 - **Wiki naming and folders**: Gemma proposes a 2-5 word subject title (such as "Price Discrimination
   Strategies" or "Sunk Cost Reasoning Example"); generic titles are rejected. Pages live in one folder
@@ -206,15 +215,26 @@ lives outside the vault so the retriever cannot find it.
 |---|---|---|---|---|
 | T1 | eight behaviors of Google's Project Oxygen | Leading People midterm guide | rank 1 | ✅ all eight, cited |
 | T2 | cheaper service my former executive search firm created for startups (paraphrased) | Examples in the Wild 4 | rank 1 | ⚠️ partial: right passage, but "strategic introductions" is not named |
-| T3 | sunk cost + my restaurant example (two sources) | Micro cheat sheet + Examples 1 | ranks 1-3 | ✅ definition and story, both cited |
-| T4 | the WACC in my Kellanova DCF (not in the wiki) | none | general WACC passages only | ✅ "Insufficient evidence", no number |
+| T3 | sunk cost + my restaurant example (two sources) | Micro cheat sheet + Examples 1 | ranks 1-3 | ✅ definition and story; every sentence restates a verified quote |
+| T4 | the WACC in my Kellanova DCF (not in the wiki) | none | general WACC passages only | ✅ no quote could be verified, so the harness refused; no number |
 
 Full cards with retrieved passages, answers, citations and my assessment:
 [`evidence/ask-evidence-cards.md`](evidence/ask-evidence-cards.md). Mode checks (chat capabilities,
 follow-up, chat claim not used by ask, raw search): [`evidence/eval-report.md`](evidence/eval-report.md).
 Offline run: [`evidence/offline-demo.gif`](evidence/offline-demo.gif) (asciinema recording
-[`evidence/offline-demo.cast`](evidence/offline-demo.cast)). Earlier attempts are kept in
+[`evidence/offline-demo.cast`](evidence/offline-demo.cast)).
+
+**Before/after.** The first offline evaluation used a single-step ask. Its cards, report and recording
+are kept in [`evidence/previous/`](evidence/previous/). Earlier model and prompt attempts are in
 [`runs/ask/`](runs/ask/) (`attempt-1` … `attempt-3-*`).
+
+| | v1: single step | v2: extract → verify → answer (current) |
+|---|---|---|
+| T1 | ✅ | ✅ |
+| T2 | ⚠️ right passage, service not named | ⚠️ same, and the first sentence blends Examples 3 into "a service" |
+| T3 | ✅, with some unquoted (true) details | ✅, every sentence traceable to a verified quote |
+| T4 | ✅ model chose to refuse | ✅ refusal enforced by the harness (no second call) |
+| Chat "save a fact" | ⚠️ said "I've noted that" and invented "no Finance section" | ✅ guardrail rewrote it: kept for this conversation only, not in the wiki |
 
 ### Obsidian: the wiki as a human sees it
 
@@ -245,23 +265,35 @@ never says "Egon Zehnder", "versioning" or "second-degree price discrimination".
   - Loosening the rules made E2B answer from the neighbouring essay (Examples 3, about segment
     pricing) instead.
   - E4B picks the right passage, but it summarizes it as "a lower-priced version of its service" and
-    blends in the third-degree pricing story from Examples 3. That blend is misleading, because the
-    passage itself calls this versioning (second-degree price discrimination).
+    blends in the third-degree pricing story from Examples 3.
 - **Root cause**: two very similar passages from the same series appear together, and a small model
   merges them instead of quoting the specific name.
 
-**Improvement to try.** Add a short "extract then answer" step. First ask Gemma to copy the one or two
-sentences from the evidence that directly answer the question (quote-only, citation required), then
-write the answer from those quotes. That pushes exact terms like "strategic introductions" into the
-answer and makes each claim verifiable. A cheaper alternative is to rerank the retrieved passages with
-a cross-encoder and keep only the top 3.
+**Improvement I tried: extract → verify → answer.** Gemma first copies the sentences that answer the
+question, the harness checks that each quote really exists in its passage, and Gemma then answers from
+the verified quotes only. I reran all four evals offline (cards and recording in `evidence/`).
+- **What improved**:
+  - Every claim in T1 and T3 now traces to a verified quote.
+  - T4's refusal is enforced by code: no quote survives, so the model is never asked to answer.
+  - Invented quotes are rejected automatically.
+- **What stayed wrong**: T2. Step 1 quoted the Examples 4 sentence about "the lower-priced version", but
+  not the sentence that names it ("strategic introductions"). The answer still blends it with Examples
+  3. I also tried a general rule ("when a sentence refers to something by description, also quote the
+  sentence that names it"). The output was identical at temperature 0, so I removed it. I stopped
+  there on purpose: tuning prompts until this one question passes would overfit the test.
+- **What I learned about my checks**: the new word-overlap support check flagged nothing in T2, because
+  every word of the blended sentence does appear in the cited passages. It catches invented content,
+  not a wrong connection between true facts.
+
+**Next improvement to try.** Rerank before generating: score each retrieved passage against the question
+with a small local cross-encoder, and pass only passages from the single best-matching source when one
+clearly dominates. That would remove the competing Examples 3 passage from T2's context. Alternatively,
+add an entailment check on each sentence (does the quote *imply* the claim?) instead of word overlap.
 
 **Other known limitations.**
-- In the offline chat check, the persona correctly said a fact typed in chat is not saved in the
-  wiki, but it still opened with "I've noted that", and it wrongly said there is no Finance section.
-  `ask` was unaffected (insufficient evidence). A stricter persona rule, or a harness check that removes
-  "noted/saved" claims, would fix the wording.
 - Two merges are debatable ("Rebranding" into "Promotion and Communications", "Differentiation" into
   "Brand Strategy").
 - 10 pages have no related-page links, and are reachable only from `index.md`.
 - Diagrams in the cheat sheets were not exported, so their content is missing.
+- The chat guardrail is a pattern match. It catches "I've noted / saved / will remember", but not every
+  possible phrasing.

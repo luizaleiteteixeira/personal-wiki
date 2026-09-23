@@ -19,6 +19,6 @@ echo "Running the eval script offline (about 2 minutes)…"
 HF_HUB_OFFLINE=1 .venv/bin/python -W ignore -m tests.run_evals | tee evidence/offline-evals.log
 
 echo "Rendering the GIF…"
-agg --speed 2 --idle-time-limit 2 evidence/offline-demo.cast evidence/offline-demo.gif
+agg --speed 1 --idle-time-limit 4 --last-frame-duration 6 evidence/offline-demo.cast evidence/offline-demo.gif
 echo
 echo "Done. You can turn Wi-Fi back on and tell Claude the recording is finished."

@@ -56,7 +56,9 @@ def main():
         report["evals"].append({**e, "status": r["citation_check"]["status"], "answer": r["answer"],
                                 "retrieved": [p["location"] for p in r["retrieved"]],
                                 "expected_retrieved": all(s in retrieved_paths for s in e["expected_sources"]),
-                                "cited_sources": cited_paths, "timing": r["timing"], "card": r["saved_to"]})
+                                "cited_sources": cited_paths, "quotes": r["extracted_quotes"],
+                                "weakly_supported": r["citation_check"]["weakly_supported"],
+                                "timing": r["timing"], "card": r["saved_to"]})
         print(f"{e['id']}: {r['citation_check']['status']}  ({r['timing']['generation_seconds']} s)")
 
     # --- mode boundary checks
@@ -78,7 +80,8 @@ def main():
     t3 = chat.turn("For the record, my Kellanova WACC was 9%.")
     r = ask("What WACC did I use in my Kellanova DCF valuation?")
     report["mode_checks"] += [
-        {"check": "claim made only in chat", "input": t3["user"], "output": t3["assistant"]},
+        {"check": "claim made only in chat", "input": t3["user"], "output": t3["assistant"],
+         "guardrail": t3["guardrail"]},
         {"check": "ask ignores chat history", "input": r["question"], "status": r["citation_check"]["status"],
          "output": r["answer"], "card": r["saved_to"]},
     ]
@@ -108,7 +111,10 @@ def render(r: dict) -> str:
         lines.append(f"| {e['id']} | {e['kind']} | {e['status']} | {'yes' if e['expected_retrieved'] else 'NO'}"
                      f" | {', '.join(e['cited_sources']) or '-'} | {e['timing']['generation_seconds']} |")
     for e in r["evals"]:
+        quotes = "\n".join(f"- [{q['id']}] `{q['location']}`: \"{q['text']}\"" for q in e["quotes"]) or "- none"
+        weak = "; ".join(w["sentence"] for w in e["weakly_supported"]) or "none"
         lines += [f"\n### {e['id']}: {e['question']}\n", f"Expected: {e['expected']}\n",
+                  f"Verified quotes (step 1):\n{quotes}\n", f"Weakly supported sentences: {weak}\n",
                   f"Answer:\n\n> " + e["answer"].replace("\n", "\n> "), f"\nFull evidence card: `{e['card']}`"]
     lines.append("\n## Mode checks\n")
     for c in r["mode_checks"]:
@@ -119,6 +125,8 @@ def render(r: dict) -> str:
             lines.append("\nNotes used: " + "; ".join(f"`{n}`" for n in c["notes"]))
         if "passages" in c:
             lines.append("\nPassages returned (no generated answer):\n" + "\n".join(f"- `{p}`" for p in c["passages"]))
+        if c.get("guardrail"):
+            lines.append(f"\nHarness guardrail: {c['guardrail']}")
         if "output" in c:
             lines.append("\nOutput:\n\n> " + c["output"].replace("\n", "\n> "))
         lines.append("")

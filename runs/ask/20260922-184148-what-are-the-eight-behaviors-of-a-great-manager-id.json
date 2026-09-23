@@ -1,0 +1,107 @@
+{
+  "saved_at": "2026-09-22T18:41:48",
+  "mode": "ask",
+  "question": "What are the eight behaviors of a great manager identified by Google's Project Oxygen?",
+  "model": "mlx-community/gemma-4-e4b-it-4bit",
+  "quantization": "4-bit (MLX)",
+  "runtime": "mlx-vlm 0.7.2, mlx 0.32.2",
+  "embedding_model": "mlx-community/all-MiniLM-L6-v2-4bit",
+  "execution": "local",
+  "retrieved": [
+    {
+      "location": "raw/leading-people-midterm-study-guide.md › Managing People",
+      "path": "raw/leading-people-midterm-study-guide.md",
+      "section": "Managing People",
+      "page": null,
+      "score": 0.03333,
+      "cosine": 0.6713,
+      "bm25": 21.19,
+      "text": "# Managing People (Session 2)\n\n  - AI & Management: Coordination, data-processing and monitoring tasks get automated first; managers’ value shifts to judgment (interpreting), ethics (moral decisions), coaching, meaning-making to human leadership (motivating people).\n  - Google’s Project Oxygen (8 behaviors of a great manager): Good coach; empowers (no micromanage); cares about people; results-oriented; good communicator; supports careers; clear vision/strategy; technical expertise.\n  - Big-Two\n  - Agency: competence, dominance\n  - Communality: warmth, trustworthiness → less likely to self-select into leadership word\n  - Evidence-Based Management (EBM): Instead of anecdotes and bias, use systematic evidence - people mistake correlation for causation.\n  - Good evidence: experiments → random assignment, control groups."
+    },
+    {
+      "location": "raw/leading-people-midterm-study-guide.md › Introduction: Leadership vs. Management",
+      "path": "raw/leading-people-midterm-study-guide.md",
+      "section": "Introduction: Leadership vs. Management",
+      "page": null,
+      "score": 0.03252,
+      "cosine": 0.4259,
+      "bm25": 8.848,
+      "text": "Midterm Study Guide — Leading People (Complete)\n# Introduction: Leadership vs. Management (Session 1)\n\n  - Management = organize/coordinate/execute → about process/how\n  - Leadership = influence/vision/why → about direction/meaning\n  - Great leaders do both\n  - Becoming a good leader might require being a good manager\n  - Example: Sully (Hudson landing) = competence + calm vision"
+    },
+    {
+      "location": "raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2",
+      "path": "raw/micro-examples-in-the-wild-2.md",
+      "section": "Examples in the Wild 2",
+      "page": null,
+      "score": 0.02967,
+      "cosine": 0.4005,
+      "bm25": 4.063,
+      "text": "I used to work for Egon Zehnder, a leadership advisory firm focused on executive search. I remember how hard it was to price a project, especially because it was difficult to measure the marginal cost of a search. \n\n\"Should we accept this project?\" was a frequent discussion."
+    },
+    {
+      "location": "raw/leading-people-final-study-guide.md › Macro Interactions — Change",
+      "path": "raw/leading-people-final-study-guide.md",
+      "section": "Macro Interactions — Change",
+      "page": null,
+      "score": 0.02862,
+      "cosine": 0.3938,
+      "bm25": 3.715,
+      "text": "### **Session 14: Change**\n\n* Organizational transformation in structure, strategy, operations, or culture to adapt to pressures. Can be incremental or radical.  \n* **Challenge:** People tend to resist new ideas and ideas. Change requires measured, intentional action.  \n  * **Status quo bias**: Preference for the current state of affairs  \n  * **Loss aversion**   \n  * **Endowment effect:** once you have ownership over something, you value it more  \n* **3 stages of change: Unfreeze** existing practices, **change** through communication & support, **refreeze** by enforcing or supporting new behaviors after the change  \n* **For successful change:**   \n  * Treat change as continuous.  \n  * Embed it into operating rhythm and culture.  \n  * Manage energy levels and expectations – know when organization can absorb change.  \n  * Use aspirations to stretch thinking.  \n  * Drive change from the middle out.  \n  * Build social capital and spend it wisely."
+    },
+    {
+      "location": "raw/marketing-final-cheat-sheet.md › Module 2: Market Research & Consumer Insights",
+      "path": "raw/marketing-final-cheat-sheet.md",
+      "section": "Module 2: Market Research & Consumer Insights",
+      "page": null,
+      "score": 0.02705,
+      "cosine": 0.375,
+      "bm25": 3.655,
+      "text": "## **MODULE 2: MARKET RESEARCH & CONSUMER INSIGHTS**\n\n### **2.1 Market Research Framework**\n\n#### **Decision Problem vs. Research Problem:**\n\n* **Decision problem**: What business/marketing decision needs to be made?  \n* **Research problem**: What information/insights might help?  \n* **Key question**: What would I like to know that I don't know?​\n\n#### **Three Research Purposes:​**\n\n1. **Exploratory**: \"What's happening?\" (upfront: new category, acquisition, creative development; ongoing: check-ins)  \n2. **Evaluative**: \"Go/no-go decision\" (upfront: product, advertising, packaging; concepts pre-launch)  \n3. **Tracking**: \"Trends, changes over time; did we meet goals?\" (benchmark pre-wave, ongoing, post-wave)​\n\n#### **Behaviors Measured:​**\n\n* **Actual**: In-store POS, online purchases  \n* **Observed**: Video, shop-a-longs, ethnography  \n* **Reported**: Surveys, focus groups, interviews"
+    },
+    {
+      "location": "raw/leading-people-final-study-guide.md › Complex Interactions — Persuasion",
+      "path": "raw/leading-people-final-study-guide.md",
+      "section": "Complex Interactions — Persuasion",
+      "page": null,
+      "score": 0.02597,
+      "cosine": 0.3206,
+      "bm25": 5.509,
+      "text": "* Defense: Separate the message from the messenger — Am I agreeing because I like them, or because it makes sense?  \n  * **Commitment & Consistency**: Once people commit publicly or in writing, they’re motivated to behave consistently with that stance → secure a small, public commitment first (manager first ask to review a draft and later request full help on a project)  \n    * Defense: Reflect before agreeing — Does this commitment still fit my priorities?  \n  * **Reciprocity**: People feel obligated to return favors or concessions they’ve received → Offer genuine help or value before asking for something in return  \n    * Defense: Acknowledge the tactic — gratitude is good, obligation is optional.  \n* Other strategies  \n  * State what people tend to lose (don't like losing → take action)  \n* Ethical persuasion → win-win alignment."
+    }
+  ],
+  "extracted_quotes": [
+    {
+      "id": "S1",
+      "location": "raw/leading-people-midterm-study-guide.md › Managing People",
+      "text": "Google’s Project Oxygen (8 behaviors of a great manager): Good coach; empowers (no micromanage); cares about people; results-oriented; good communicator; supports careers; clear vision/strategy; technical expertise."
+    }
+  ],
+  "rejected_quotes": [],
+  "answer": "The eight behaviors of a great manager identified by Google's Project Oxygen are:\n1. Good coach [S1].\n2. Empowers (no micromanage) [S1].\n3. Cares about people [S1].\n4. Results-oriented [S1].\n5. Good communicator [S1].\n6. Supports careers [S1].\n7. Clear vision/strategy [S1].\n8. Technical expertise [S1].",
+  "citations": [
+    {
+      "id": "S1",
+      "location": "raw/leading-people-midterm-study-guide.md › Managing People"
+    }
+  ],
+  "citation_check": {
+    "status": "answered_with_citations",
+    "valid": [
+      1
+    ],
+    "invalid": [],
+    "weakly_supported": []
+  },
+  "timing": {
+    "generation_seconds": 8.25,
+    "steps": [
+      4.77,
+      3.48
+    ],
+    "prompt_tokens": 1695,
+    "output_tokens": 151,
+    "tokens_per_sec": 34.7,
+    "mlx_peak_memory_gb": 5.87,
+    "process_peak_rss_gb": 3.44
+  }
+}

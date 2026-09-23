@@ -87,6 +87,16 @@ def cmd_ask(args):
               f"{', '.join('S%d' % n for n in r['citation_check']['invalid'])}{RESET}")
     if r["citation_check"]["status"] == "uncited_answer":
         print(f"{YELLOW}  warning: the answer has no citations; treat it as unsupported.{RESET}")
+    for w in r["citation_check"]["weakly_supported"]:
+        print(f"{YELLOW}  check: \"{w['sentence'][:90]}\" shares only {int(w['overlap'] * 100)}% of its words "
+              f"with {', '.join(w['cited'])}{RESET}")
+    print(f"\n{BOLD}Verified quotes{RESET} (step 1, checked against the passages)")
+    for q in r["extracted_quotes"]:
+        print(f"  [{q['id']}] \"{q['text'][:110]}{'…' if len(q['text']) > 110 else ''}\"")
+    if not r["extracted_quotes"]:
+        print("  none: the harness answered 'insufficient evidence' without a second model call")
+    if r["rejected_quotes"]:
+        print(f"{DIM}  rejected {len(r['rejected_quotes'])} quote(s) not found verbatim in the passages{RESET}")
     if args.show_evidence:
         print(f"\n{BOLD}Retrieved passages{RESET}")
         for i, p in enumerate(r["retrieved"], 1):
@@ -122,6 +132,8 @@ def cmd_chat(args):
             e = session.turn(msg)
             tag = f"looked up {len(e['notes'])} note passages" if e["notes"] else "no notes lookup"
             print(f"{DIM}({tag}: {e['reason']}){RESET}")
+            if e["guardrail"]:
+                print(f"{DIM}(guardrail: {e['guardrail']}){RESET}")
             print(f"{CYAN}oski ›{RESET} " + e["assistant"].strip() + "\n")
             for j, n in enumerate(e["notes"], 1):
                 if f"[N{j}]" in e["assistant"]:

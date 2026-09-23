@@ -1,0 +1,92 @@
+{
+  "saved_at": "2026-09-22T18:43:17",
+  "mode": "chat",
+  "model": "mlx-community/gemma-4-e4b-it-4bit",
+  "quantization": "4-bit (MLX)",
+  "runtime": "mlx-vlm 0.7.2, mlx 0.32.2",
+  "embedding_model": "mlx-community/all-MiniLM-L6-v2-4bit",
+  "execution": "local",
+  "turns": [
+    {
+      "user": "what can you help me with?",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "notes": [],
+      "assistant": "Hey Luiza! I'm Oski Notes, and I'm here to be your study buddy for Berkeley Haas MBA. Think of me as someone who has read all your notes and is ready to help you organize your thoughts. 😊\n\nHere’s what I can do:\n\n*   **Brainstorm & Draft:** I can help you outline papers, draft emails, plan study sessions, or brainstorm interview stories.\n*   **Review Your Notes:** If you give me your notes, I can pull up specific concepts from your courses (Leading People, Microeconomics, Data & Decisions, Marketing, Finance, Business Communication) using the `wiki ask` command, and I'll cite it for you!\n*   **Keep Context:** I remember what we've discussed *in this chat*, so you can always say \"make that shorter\" or \"add an example.\"\n\n**Just a heads up on my limits:** I can't browse the live internet, see your calendar, or grades. If you want me to remember something important for future reference, you'll need to use `wiki ingest`!\n\nWhat's on your mind today? Ready to tackle something?",
+      "guardrail": null,
+      "generation_seconds": 8.52,
+      "mlx_peak_memory_gb": 5.73
+    },
+    {
+      "user": "Draft a short 5-day study plan for my Microeconomics final using my notes.",
+      "retrieval": "retrieve",
+      "reason": "message asks about her notes or names a course",
+      "notes": [
+        {
+          "location": "raw/micro-examples-in-the-wild-1.md › Examples in the Wild 1",
+          "path": "raw/micro-examples-in-the-wild-1.md",
+          "section": "Examples in the Wild 1",
+          "page": null,
+          "score": 0.02881,
+          "cosine": 0.3146,
+          "bm25": 4.833,
+          "text": "This weekend I went to dinner at Jupiter with two second-years I met that day. I had been to the restaurant before and ordered one small pizza. However, since I had skipped lunch and the two second-years ordered large pizzas, I thought: “I’m hungry, the large is not much more expensive - why not?”. \n\nAfter eating three slices (out of eight), I realized I was already full. The restaurant didn't have take-out boxes, so I couldn’t save the rest for later. That was the moment I realized I had spent more money than I needed. I forced myself to finish the pizza just because I had already paid for it."
+        },
+        {
+          "location": "raw/micro-final-cheat-sheet.md › Cheat sheet Micro Final",
+          "path": "raw/micro-final-cheat-sheet.md",
+          "section": "Cheat sheet Micro Final",
+          "page": null,
+          "score": 0.02411,
+          "cosine": 0.2629,
+          "bm25": 4.603,
+          "text": "Elasticity: how sensitive Q demanded is to P (at a specific portion of the demand curve\nSlope of demand curve = derivative of demand curve (own price elasticity). Ƹ = derivative of demand x P/Q\nUnit free (% change): change in Q (y) / change in P (x)\n|Ƹ| > 1 → elastic (very) → change in P - large change in Q (luxury ou homogeneous goods) - when P > P*\n|Ƹ| < 1 → inelastic (not very) → large change in P - Q almost same (necessities or unique products) - when P < P*\n|Ƹ| = 0 → perfect inelastic (I) / |Ƹ| = 1 → unit elastic (E)\nShock in demand → increase in Q and P.\nIf supply is elastic (' more horizontal) = shock impacts more Q (long run curves)\nLT → demand curves tend to be more flat/horizontal - more options/choice (for a given change in P, larger change in Q)"
+        },
+        {
+          "location": "raw/micro-examples-in-the-wild-3.md › Examples in the Wild 3",
+          "path": "raw/micro-examples-in-the-wild-3.md",
+          "section": "Examples in the Wild 3",
+          "page": null,
+          "score": 0.0238,
+          "cosine": 0.3128,
+          "bm25": 2.288,
+          "text": "The conditions for segment pricing were present. First, there was heterogeneity in willingness to pay: startups faced budget constraints while corporations were open to paying higher fees. Second, we could identify “groups” using public information such as size, investments, and financial reports. Third, we could easily separate these segments in our pricing model, ensuring each one was charged appropriately.\n\nThe main threats are customer anger and competition. Some clients realized they were being charged different prices, which risked damaging trust. In addition, competitors could win projects by continuing to offer uniform rates to large corporations, which might force EZ to reconsider our pricing strategy. \n\nStill, segmentation expanded EZ’s client base and increased revenue overall.\n\n**Word count: 197**"
+        },
+        {
+          "location": "raw/micro-examples-in-the-wild-2.md › Examples in the Wild 2",
+          "path": "raw/micro-examples-in-the-wild-2.md",
+          "section": "Examples in the Wild 2",
+          "page": null,
+          "score": 0.0201,
+          "cosine": 0.26,
+          "bm25": 2.395,
+          "text": "As we learned with John Deree’s case, we shouldn’t include overhead costs (like Linkedin Recruiting license, rent, and salary of support staff) in the marginal cost. The right measure should then be the incremental hours that consultants and experts would spend on the work and other direct expenses, such as travel. However, estimating that cost was challenging, as we never knew how long it would take to find the right person for the position. There were also \"hidden factors\" like past training, accumulated experience, or prior similar projects that sometimes made consultants faster. And the opportunity cost of using a senior leader's time was hard to quantify, since we couldn’t predict future demand (project’s type, duration, price)."
+        }
+      ],
+      "assistant": "Okay, I can definitely draft a study plan for your Microeconomics final using these notes! Since the notes cover elasticity, pricing strategies, and cost concepts, we can structure the week around those heavy hitters.\n\nHere is a suggested 5-day plan. I've tried to build on the concepts in your notes ([N1]-[N4]) while also hitting the breadth of your Topic Map.\n\n### 🧠 Microeconomics Final Study Plan (5 Days)\n\n**Goal:** Solidify core concepts, link theory to practice, and practice application.\n\n*   **Day 1: Foundations & Costs**\n    *   Review: Economic Cost Concepts ([N4] touches on this).\n    *   Focus: Marginal Cost vs. Overhead. Review why sunk costs matter ([N1] touches on this).\n    *   *Action:* Review \"Economic Cost Concepts\" & \"Marginal Cost Estimation.\"\n*   **Day 2: Demand Side Deep Dive**\n    *   Review: Elasticity ([N2] is a great cheat sheet!).\n    *   Focus: Applying the concepts of $\\epsilon$ (own price elasticity, cross-price elasticity) and how it relates to market types (necessity vs. luxury).\n    *   *Action:* Review \"Price Elasticity of Demand\" & \"Market Power and Elasticity.\"\n*   **Day 3: Pricing Strategies & Market Power**\n    *   Review: How firms maximize revenue.\n    *   Focus: Link elasticity to pricing decisions. Review concepts from [N3] (Segmenting markets).\n    *   *Action:* Review \"Third-Degree Pricing Discrimination,\" \"Simple Monopoly Pricing,\" & \"Price Discrimination Strategies.\"\n*   **Day 4: Advanced Topics & Application**\n    *   Review: Advanced models.\n    *   Focus: Spend time on the more complex models. How does market structure affect pricing?\n    *   *Action:* Review \"Oligopoly Market Structure,\" \"Monopolistic Competition Market Structure,\" or \"Game Theory Concepts.\"\n*   **Day 5: Synthesis & Mock Application**\n    *   Review: Connect the dots. How does elasticity affect the success of a pricing strategy?\n    *   Focus: Run through examples like the ones in [N1] or [N3] mentally, applying the models.\n    *   *Action:* Quick review of \"Auction Types And Strategy\" and a final pass through the \"Cheat Sheet.\"\n\nHow does that look? We can adjust the pacing or dive deeper into any of those days!",
+      "guardrail": null,
+      "generation_seconds": 19.09,
+      "mlx_peak_memory_gb": 5.89
+    },
+    {
+      "user": "make that shorter",
+      "retrieval": "none",
+      "reason": "conversational or editing turn",
+      "notes": [],
+      "assistant": "Got it. Trimming the fluff and keeping it high-impact. 🚀\n\nHere is the ultra-concise version:\n\n### ⚡ Microeconomics Final Study Plan (5 Days)\n\n*   **Day 1:** Cost Basics. Focus on Marginal vs. Economic Cost ([N4]).\n*   **Day 2:** Demand Side. Master Elasticity ($\\epsilon$). Why is it important? ([N2]).\n*   **Day 3:** Pricing Power. Link Elasticity to Pricing Strategies (Monopoly/Discrimination) ([N3]).\n*   **Day 4:** Market Structures. Review Oligopoly/Monopolistic Competition models.\n*   **Day 5:** Synthesis. Run through application examples. Connect all concepts.\n\nIs that punchier?",
+      "guardrail": null,
+      "generation_seconds": 7.28,
+      "mlx_peak_memory_gb": 5.89
+    },
+    {
+      "user": "For the record, my Kellanova WACC was 9%.",
+      "retrieval": "none",
+      "reason": "best passage similarity 0.23 < 0.4",
+      "notes": [],
+      "assistant": "Thanks for sharing that detail about the Kellanova WACC!\n\nJust to be clear, that information is noted here for this conversation, but it is **not** in your current study notes or wiki. If you want to add it to your official study materials, you can use `wiki ingest` later on. 😊",
+      "guardrail": "rewrote a reply that claimed to save or remember information",
+      "generation_seconds": 4.95,
+      "mlx_peak_memory_gb": 5.91
+    }
+  ]
+}
